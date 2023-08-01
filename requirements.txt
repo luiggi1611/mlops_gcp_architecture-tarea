@@ -1,0 +1,11 @@
+mlflow
+xgboost
+imblearn
+feature-engine
+loguru
+pytz
+boto3
+scikit-learn
+pandas
+numpy
+apache-airflow==2.6.2
