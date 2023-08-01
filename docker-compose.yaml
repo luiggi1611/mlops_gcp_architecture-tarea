@@ -171,6 +171,36 @@ services:
 
     entrypoint: sh -c 'jupyter lab --ip=0.0.0.0 --port=${JUPYTER_PORT} --no-browser --notebook-dir=/mlops --allow-root'
 
+########################################################################################################
+# This container runs the webserver for mlflow.
+########################################################################################################
+  flask:
+  
+    # build: ./dockerfiles/mlflow
+    # image: mlflow_server
+    image: mlops-mlflow:latest
+    ports:
+      - '5555:9999'
+    environment:
+      JUPYTER_ENABLE_LAB: "no"
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN}
+      PYTHONPATH: "$$PYTHONPATH:/opt/airflow/plugins"
+      # Sets the tracking uri env variable for mlflow in jupyter lab
+      # AWS credentials needed to access it via mlflow
+      MLFLOW_TRACKING_URI: "http://mlflow:5000"
+      # GIT_PYTHON_REFRESH: "quiet"
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      # Mounts the notebooks folder
+      - ./Deploying-machine-learning:/Deploying-machine-learning
+    # The following command will launch the mlflow webserver on port 5000, with postgresql as the database
+    # and S3 as the artifact storage.
+    # The option "--serve-artifacts" will enable the serving of artifacts through mlflow as a proxy to the S3 server.
+    command : python Deploying-machine-learning/app.py
+
+
+
 
 ########################################################################################################
 # This container runs the postgresql database for airflow.

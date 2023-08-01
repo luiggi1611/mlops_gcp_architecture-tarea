@@ -26,9 +26,12 @@ from proyecto.utils import (
 PATH_DIR_DATA = "./data"
 PATH_DIR_DATA_INPUT = PATH_DIR_DATA + '/input_data'
 PATH_DIR_DATA_OUTPUT = PATH_DIR_DATA + '/output_data_model'
-
+PATH_DIR_DATA_OUTPUT_MODEL = PATH_DIR_DATA + '/final_model'
 if not os.path.exists(PATH_DIR_DATA_OUTPUT):
     os.makedirs(PATH_DIR_DATA_OUTPUT)
+
+if not os.path.exists(PATH_DIR_DATA_OUTPUT_MODEL):
+    os.makedirs(PATH_DIR_DATA_OUTPUT_MODEL)
 
 
 _data_files_ = {
@@ -51,6 +54,7 @@ type_model1 = 'logistic_regression'
 model_name2 = 'prd_RF_model_lung'
 experiment_name2 = "prd-RF-prediction"
 type_model2 = 'RF'
+models_mod = [model_name1 ,model_name2]
 args={
     'owner' : 'datapath',
     'depends_on_past': False,
@@ -277,10 +281,40 @@ def mydag():
                 version=model_version,
                 stage="Production"
             )
+    @task
+    def check_final_model(data_files, models = models_mod):
+        models_comparators = []
+        for reg_model in models:
+            models_comparators.append(f"models:/{reg_model}/latest")
+
+        #reg_model_latest = f"models:/{reg_model}/latest"
+        #reg_model_latest = f"models:/{reg_model}/latest"
+        x_test = pd.read_csv(data_files['transformed_x_test_file'])
+        y_test = pd.read_csv(data_files['transformed_y_test_file']).values
+
+        # First check if the requested model and version exist
+        i = 0
+        val = 0
+        for x in range(len(models_comparators)):
+            new_model = mlflow.pyfunc.load_model(model_uri=models_comparators[x])
+            new_y_pred = get_predictions(x_test, new_model)
+            new_val_accuracy, _ = get_val_performance(y_test, new_y_pred)
+            logger.info(f'New Model: {new_val_accuracy}')
+
+        if new_val_accuracy >= val:
+            logger.info(f"Restraremos una nueva version del modelo {models[i]}.")
+        else:
+            i+=1
+            logger.info(f"El nuevo modelo {models[i]} no presenta un mejor performance.")
+        
+        with open(PATH_DIR_DATA_OUTPUT_MODEL + '/model.txt', 'w') as file:
+            file.write(models_comparators[x])
+        return 'stopfinal'
 
 
     # Execution nodes
     node_start = EmptyOperator(task_id='Starting_the_process', retries=1)  
+    
     end_node = EmptyOperator(task_id="end", trigger_rule="all_done")
     node_read_data = read_data(_data_files_)
     node_homologate_data = homologate_values(_data_files_)
@@ -374,18 +408,27 @@ def mydag():
         trigger_rule="all_done",
     )
 
+    node_stopfinal = EmptyOperator(
+        task_id='wait_models',
+        trigger_rule="all_done",
+    )
+
+    node_model_final = check_final_model(_data_files_, models = models_mod)
+
     node_start >> node_read_data >> \
         node_homologate_data>> \
     node_split_data >> node_preprocess_data >> \
             node_train_model1 >> node_check_registered_model1 >> \
                 [node_register_model1, 
                  node_register_model_by_comparison1, 
-                 node_stop1]>>  end_node
+                 node_stop1] >>  node_stopfinal
     
     node_preprocess_data >> node_train_model2 >> node_check_registered_model2 >> \
                 [node_register_model2, 
                  node_register_model_by_comparison2, 
-                 node_stop2]  >> end_node
+                 node_stop2]  >> node_stopfinal
+    
+    node_stopfinal >> node_model_final >> end_node
 
 
 etl_dag = mydag()

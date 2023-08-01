@@ -2,3 +2,5 @@ mlflow
 boto3
 pymysql
 psycopg2-binary
+flask
+WTForms
