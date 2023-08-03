@@ -198,7 +198,7 @@ services:
     # The following command will launch the mlflow webserver on port 5000, with postgresql as the database
     # and S3 as the artifact storage.
     # The option "--serve-artifacts" will enable the serving of artifacts through mlflow as a proxy to the S3 server.
-    command : python Deploying-machine-learning/app.py
+    command : python flaskapp/app.py
 
 
 
