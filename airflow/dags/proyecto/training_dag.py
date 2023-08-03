@@ -300,15 +300,16 @@ def mydag():
             new_y_pred = get_predictions(x_test, new_model)
             new_val_accuracy, _ = get_val_performance(y_test, new_y_pred)
             logger.info(f'New Model: {new_val_accuracy}')
-
-        if new_val_accuracy >= val:
-            logger.info(f"Restraremos una nueva version del modelo {models[i]}.")
-        else:
-            i+=1
-            logger.info(f"El nuevo modelo {models[i]} no presenta un mejor performance.")
+            if new_val_accuracy >= val:
+                val = new_val_accuracy
+                i=x
+                logger.info(f"Restraremos una nueva version del modelo {models[i]}.")
+            else:
+                logger.info(f"El nuevo modelo {models[i]} no presenta un mejor performance.")
         
         with open(PATH_DIR_DATA_OUTPUT_MODEL + '/model.txt', 'w') as file:
-            file.write(models_comparators[x])
+            file.write(models_comparators[i])
+
         return 'stopfinal'
 
 

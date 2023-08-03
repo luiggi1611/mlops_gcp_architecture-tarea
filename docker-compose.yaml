@@ -193,7 +193,7 @@ services:
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     volumes:
       # Mounts the notebooks folder
-      - ./Deploying-machine-learning:/Deploying-machine-learning
+      - ./flaskapp:/flaskapp
       - ./data:/data
     # The following command will launch the mlflow webserver on port 5000, with postgresql as the database
     # and S3 as the artifact storage.

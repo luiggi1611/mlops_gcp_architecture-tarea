@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
+  <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
+  <meta name="author" content="PIXINVENT">
+  <title>Pagina del estado de salud
+  </title>
+  <link rel="apple-touch-icon" href="../../../static/app-assets/images/ico/apple-icon-120.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../../../static/app-assets/images/ico/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+  rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+  rel="stylesheet">
+  <!-- BEGIN VENDOR CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../static/app-assets/css/vendors.css">
+  <link rel="stylesheet" type="text/css" href="../../../static/app-assets/vendors/css/pickers/daterange/daterangepicker.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/ui/dragula.min.css">
+  <!-- END VENDOR CSS-->
+  <!-- BEGIN MODERN CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../static/app-assets/css/app.css">
+  <!-- END MODERN CSS-->
+  <!-- BEGIN Page Level CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../static/app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
+  <link rel="stylesheet" type="text/css" href="../../../static/app-assets/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="../../../static/app-assets/css/plugins/forms/wizard.css">
+  <link rel="stylesheet" type="text/css" href="../../../static/app-assets/css/plugins/pickers/daterange/daterange.css">
+  <!-- END Page Level CSS-->
+  <!-- BEGIN Custom CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../static/assets/css/style.css">
+  <!-- END Custom CSS-->
+</head>
+<body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
+data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+  <!-- fixed-top-->
+  <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-dark navbar-shadow">
+    <div class="navbar-wrapper">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+          <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
+          <li class="nav-item mr-auto">
+            <a class="navbar-brand" href={{url_for('index')}}>
+              <img class="brand-logo" alt="modern admin logo" src="../../../static/app-assets/images/logo/logo.png">
+              <h3 class="brand-text">MI SALUD</h3>
+            </a>
+          </li>
+          <li class="nav-item d-none d-md-block float-right"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 white" data-ticon="ft-toggle-right"></i></a></li>
+          <li class="nav-item d-md-none">
+            <a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-container content">
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+          <ul class="nav navbar-nav mr-auto float-left">
+
+
+          </ul>
+          <ul class="nav navbar-nav float-right">
+            <li class="dropdown dropdown-user nav-item">
+              <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                <span class="mr-1">Bienvenido
+                  <span class="user-name text-bold-700">@usuario</span>
+                </span>
+              </a>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- ////////////////////////////////////////////////////////////////////////////-->
+  <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="main-menu-content">
+      <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+        <li class=" nav-item"><a href={{url_for('index')}}><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Navegación</span><span class="badge badge badge-info badge-pill float-right mr-2">2</span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href={{url_for('registro')}} >Registro</a>
+            </li>
+            <li><a class="menu-item" href={{url_for('dashboard')}}>Dashboard</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li class=" navigation-header">
+          <span data-i18n="nav.category.support">Paginas Recomendadas</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+          data-placement="right" data-original-title="Support"></i>
+        </li>
+        <li class=" nav-item"><a href="https://teleatiendo.minsa.gob.pe/"><i class="la la-ambulance"></i><span class="menu-title" data-i18n="nav.support_raise_support.main">Teleconsulta medica MINSA</span></a>
+        </li>
+        <li class=" nav-item">
+          <a href="https://www.flickr.com/photos/169223934@N07/sets/72157679544554978"><i class="la la-text-height"></i>
+            <span class="menu-title" data-i18n="nav.support_documentation.main">Guias alimentarias INS</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-header row">
+        <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+          <h3 class="content-header-title mb-0 d-inline-block">Resultados de los modelos de machine learning</h3>
+          <div class="row breadcrumbs-top d-inline-block">
+
+          </div>
+        </div>
+      </div>
+      <div class="content-body">
+        <section id="drag-area">
+          <div class="row">
+            <div class="col-12 mt-1 mb-3">
+
+              <hr>
+            </div>
+          </div>
+          <div class="row" id="card-drag-area">
+
+            <div class="col-md-6 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Analisis del estado de sus pulmones</h4>
+                  <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                  <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                      <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                      <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                      <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-content collapse show">
+                  <div class="card-body">
+                    <h4 class="card-title">Sobre el estado de sus pulmones</h4>
+                    <p class="card-text">Según el modelo de machine learning  {{lung}}</p>
+                                       {% if lung=="Tiene un alto grado de padecer cancer al pulmon" %}
+                    Tiene un alto grado de padecer cancer al pulmon.Cuando recibimos un diagnóstico de cáncer, aparecen muchas emociones: es completamente normal sentirse asustado, triste o incluso enfadado. El tratamiento implica cambios físicos y químicos en el organismo, que también van a afectar a las emociones: aceptar tus sentimientos te ayudará.
+Sentir angustia es parte del proceso, pero puede ser difícil manejarla: si te ves incapaz, consúltalo con un profesional sanitario. Para gestionar la angustia, podemos llevar a cabo las siguientes acciones:
+
+                    </br>
+
+
+                    <ul class="list-group">
+                      <li class="list-group-item">Practica técnicas de relajación, meditación, yoga, o actividades como leer o escuchar música, cuidar de una mascota pueden ayudar a aquietarte. También puede ayudar el conversar sobre tu enfermedad con alguien cercano y con quien te sientas cómodo.
+
+</li>
+                      <li class="list-group-item"> Vive el “día a día”: es más sencillo afrontar la enfermedad estableciendo hitos cercanos en el tiempo.
+</li>
+                      <li class="list-group-item"> No te sientas mal por no poder mantener constantemente una actitud positiva: convivir con el cáncer es una montaña rusa de emociones, y el sentirse decaído no tiene relación con que la enfermedad empeore.
+
+</li>
+                      <li class="list-group-item"> Evita sufrir en silencio: busca apoyo en familiares, seres queridos, amigos, médicos… Las asociaciones de pacientes pueden ayudar mucho porque entienden perfectamente por lo que estás pasando.
+
+</li>
+
+
+                    </ul>
+                                  {% else %}
+  Enhorabuena!! No tiene indicios de contraer cáncer de Pulmón, puede ayudar a reducir su riesgo del cáncer de pulmón de las siguientes maneras:
+
+
+                    <ul class="list-group">
+                      <li class="list-group-item">No fume. En los Estados Unidos, fumar cigarrillos causa alrededor del 80 % al 90 % de las muertes por cáncer de pulmón. Lo más importante que usted puede hacer para prevenir el cáncer de pulmón es no empezar a fumar o, si ya fuma, dejar de hacerlo.</li>
+<li class="list-group-item"> Dejar de beber alcohol, el cuerpo lo convierte en una sustancia química llamada acetaldehído. El acetaldehído daña el ADN y no le permite al cuerpo reparar el daño. Cuando se daña el ADN, una célula puede comenzar a crecer sin control y formar un tumor canceroso.
+</li>
+                        <li class="list-group-item">  Evite el humo secundario del tabaco. El humo del cigarrillo, los puros o las pipas que fuman otras personas se llama humo secundario. No deje que se fume en su casa ni en su automóvil.
+</li>
+                        <li class="list-group-item">  Realice pruebas para detectar radón en su casa. La Agencia de Protección Ambiental recomienda que se realicen pruebas para detectar gas radón
+ en todas las casas.
+</li>
+
+
+                    </ul>
+                {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+  <!-- ////////////////////////////////////////////////////////////////////////////-->
+  <footer class="footer footer-static footer-light navbar-border navbar-shadow">
+    <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+      <span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2018 <a class="text-bold-800 grey darken-2" href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent"
+        target="_blank">PIXINVENT </a>, All rights reserved. </span>
+      <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">Hand-crafted & Made with <i class="ft-heart pink"></i></span>
+    </p>
+  </footer>
+  <!-- BEGIN VENDOR JS-->
+  <script src="../../../static/app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="../../../static/app-assets/vendors/js/extensions/jquery.steps.min.js" type="text/javascript"></script>
+  <script src="../../../static/app-assets/vendors/js/pickers/dateTime/moment-with-locales.min.js"
+  type="text/javascript"></script>
+  <script src="../../../static/app-assets/vendors/js/pickers/daterange/daterangepicker.js"
+  type="text/javascript"></script>
+  <script src="../../../static/app-assets/vendors/js/forms/validation/jquery.validate.min.js"
+  type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN MODERN JS-->
+  <script src="../../../static/app-assets/js/core/app-menu.js" type="text/javascript"></script>
+  <script src="../../../static/app-assets/js/core/app.js" type="text/javascript"></script>
+  <script src="../../../static/app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+  <!-- END MODERN JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="../../../app-assets/js/scripts/cards/draggable.js" type="text/javascript"></script>
+  <script src="../../../static/app-assets/js/scripts/forms/wizard-steps.js" type="text/javascript"></script>
+  <script src="../../../app-assets/vendors/js/extensions/dragula.min.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
+</body>
+</html>

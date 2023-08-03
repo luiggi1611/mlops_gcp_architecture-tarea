@@ -1,0 +1,18 @@
+@import url("bootstrap-extended.css");
+@import url("colors.css");
+@import url("components.css");
+.google-data-studio {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.google-data-studio iframe,
+.google-data-studio object,
+.google-data-studio embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
