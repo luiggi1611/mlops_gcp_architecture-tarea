@@ -194,6 +194,7 @@ services:
     volumes:
       # Mounts the notebooks folder
       - ./Deploying-machine-learning:/Deploying-machine-learning
+      - ./data:/data
     # The following command will launch the mlflow webserver on port 5000, with postgresql as the database
     # and S3 as the artifact storage.
     # The option "--serve-artifacts" will enable the serving of artifacts through mlflow as a proxy to the S3 server.
